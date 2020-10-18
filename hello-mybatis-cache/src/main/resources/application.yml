@@ -1,0 +1,33 @@
+server:
+  port: 18080
+
+spring:
+  application:
+    name: CacheDemo
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 这里使用的是 ip:3336/db_order 的数据库（一个服务一个数据库）
+    url: jdbc:mysql://120.79.0.210:3309/sys_common?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 10
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  # redis
+  redis:
+    host: 120.79.0.210
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1ms
+        min-idle: 0
+    database: 4
